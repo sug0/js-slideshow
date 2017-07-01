@@ -40,5 +40,15 @@ function SlideShow() {
 }
 
 var slideshow = new SlideShow();
-
 slideshow.displayCurrentImg();
+
+document.onkeydown = function(e) {
+    switch (e.keyCode) {
+        case 37: // left
+            slideshow.buttonPrevious();
+            break;
+        case 39: // right
+            slideshow.buttonNext();
+            break;
+    }
+}
