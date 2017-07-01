@@ -1,4 +1,4 @@
-function Slideshow() {
+function SlideShow() {
     let self = {};
     let currentImg = 0;
     let img = document.createElement("img");
@@ -39,6 +39,6 @@ function Slideshow() {
     return self;
 }
 
-var slideshow = new Slideshow();
+var slideshow = new SlideShow();
 
 slideshow.displayCurrentImg();
