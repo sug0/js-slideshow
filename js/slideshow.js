@@ -32,7 +32,7 @@ function SlideShow() {
                 else
                     currentImg = Math.abs(match[2]) % art.length;
 
-                console.log("jumping to image " + match[2]);
+                console.log("jumping to image " + currentImg);
             }
 
             fst = false;
