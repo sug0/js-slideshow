@@ -2,6 +2,8 @@ function SlideShow() {
     let self = {};
     let currentImg = 0;
     let img = document.createElement("img");
+    let rel = window.location.pathname;
+    let fst = true;
 
     /*
      * For your personal use, configure both 'baseURL' and 'art'
@@ -15,9 +17,31 @@ function SlideShow() {
     ];
 
     self.displayCurrentImg = function() {
+        if (fst) {
+            var regex = /[?&]([^=#]+)=([^&#]*)/g;
+            var match;
+
+            while ((match = regex.exec(window.location.href))) {
+                if (match[1] === "img") {
+                    console.log("jumping to image " + match[2]);
+                    break;
+                }
+            }
+
+            if (match) {
+                if (isNaN((currentImg = parseInt(match[2]))))
+                    currentImg = 0;
+                else
+                    currentImg = Math.abs(match[2]) % art.length;
+            }
+
+            fst = false;
+        }
+
         document.getElementById("displayBox").innerHTML = null;
         img.src = baseURL + art[currentImg];
         document.getElementById("displayBox").appendChild(img);
+        window.history.replaceState(null, null, rel + "?img=" + currentImg);
     }
 
     self.buttonPrevious = function() {
