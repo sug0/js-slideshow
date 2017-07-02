@@ -22,10 +22,8 @@ function SlideShow() {
             var match;
 
             while ((match = regex.exec(window.location.href))) {
-                if (match[1] === "img") {
-                    console.log("jumping to image " + match[2]);
+                if (match[1] === "img")
                     break;
-                }
             }
 
             if (match) {
@@ -33,6 +31,8 @@ function SlideShow() {
                     currentImg = 0;
                 else
                     currentImg = Math.abs(match[2]) % art.length;
+
+                console.log("jumping to image " + match[2]);
             }
 
             fst = false;
