@@ -2,6 +2,7 @@ function SlideShow() {
     let self = {};
     let currentImg = 0;
     let img = document.createElement("img");
+    let ld = document.createElement("img");
     let rel = window.location.pathname;
     let fst = true;
 
@@ -15,6 +16,12 @@ function SlideShow() {
         "20150227_00001_001.jpg", "20150324_00001_001.jpg", "20151005_00001_001.jpg",
         "20151005_00002_001.jpg", "20160624_00001_001.jpg"
     ];
+
+    img.onload = function() {
+        document.getElementById("output").innerHTML = null;
+    }
+
+    ld.src = "res/loading.gif"
 
     self.displayCurrentImg = function() {
         if (fst) {
@@ -38,6 +45,7 @@ function SlideShow() {
             fst = false;
         }
 
+        document.getElementById("output").appendChild(ld);
         document.getElementById("displayBox").innerHTML = null;
         img.src = baseURL + art[currentImg];
         document.getElementById("displayBox").appendChild(img);

@@ -36,3 +36,10 @@ html, body {
     margin-top: 1em;
     width: 100%;
 }
+
+#output {
+    margin-top: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
